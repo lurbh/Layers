@@ -1,4 +1,4 @@
-const {retriveAllCustomers, addCustomer} = require("../data-access-layer/customer");
+const {retriveAllCustomers, addCustomer, updateCustomer} = require("../data-access-layer/customer");
 
 const serviceGetAllCustomers = async () => {
     const customers = retriveAllCustomers();
@@ -10,4 +10,9 @@ const serviceAddNewCustomer = async (first_name,last_name,rating,company_id) => 
     return response;
 }
 
-module.exports= {serviceGetAllCustomers, serviceAddNewCustomer}
+const serviceUpdateCustomer = async (customer_id,first_name,last_name,rating,company_id) => {
+    const response = updateCustomer(customer_id,first_name,last_name,rating,company_id);
+    return response;
+}
+
+module.exports= {serviceGetAllCustomers, serviceAddNewCustomer, serviceUpdateCustomer}

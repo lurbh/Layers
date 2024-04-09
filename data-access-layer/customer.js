@@ -39,4 +39,14 @@ const addCustomer = async (first_name,last_name,rating,company_id) => {
     }
 }
 
-module.exports= {retriveAllCustomers, addCustomer};
+const updateCustomer = async (customer_id,first_name,last_name,rating,company_id) => {
+    try {
+        await main();
+        await connection.execute(`UPDATE Customers SET first_name=?,last_name=?,rating=?,company_id=? WHERE customer_id=?`, [first_name,last_name,rating,company_id,customer_id]);
+        return "Update Succesful";
+    } catch (error) {
+        console.log("Error updating Customers", error)
+    }
+}
+
+module.exports= {retriveAllCustomers, addCustomer, updateCustomer};
